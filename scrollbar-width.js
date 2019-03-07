@@ -1,51 +1,55 @@
 
-function getScrollbarWidth() {
-    var outer = document.createElement('div');
-    outer.style.visibility = 'hidden';
-    outer.style.width = '50px';
-    document.body.appendChild(outer);
+window.addEventListener('load', () => {
 
-    var widthNoScroll = outer.offsetWidth;
+  function getScrollbarWidth() {
+      var outer = document.createElement('div');
+      outer.style.visibility = 'hidden';
+      outer.style.width = '50px';
+      document.body.appendChild(outer);
 
-    // Force scrollbars
-    outer.style.overflow = 'scroll';
+      var widthNoScroll = outer.offsetWidth;
 
-    // Add innerdiv
-    var inner = document.createElement('div');
-    inner.style.width = '100%';
-    outer.appendChild(inner);
+      // Force scrollbars
+      outer.style.overflow = 'scroll';
 
-    var widthWithScroll = inner.offsetWidth;
+      // Add innerdiv
+      var inner = document.createElement('div');
+      inner.style.width = '100%';
+      outer.appendChild(inner);
 
-    // Remove divs
-    outer.parentNode.removeChild(outer);
+      var widthWithScroll = inner.offsetWidth;
 
-    return widthNoScroll - widthWithScroll;
-}
+      // Remove divs
+      outer.parentNode.removeChild(outer);
 
-function setScrollbarVar(value) {
-    document.body.style.setProperty('--scrollbarWidth', value);
-}
+      return widthNoScroll - widthWithScroll;
+  }
 
-function addScrollObserver() {
+  function setScrollbarVar(value) {
+      document.body.style.setProperty('--scrollbarWidth', value);
+  }
 
-    var config = {
-      threshold: 1.0
-    }
+  function addScrollObserver() {
 
-    var handleIntersect = (entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.intersectionRatio < 1) {
-                setScrollbarVar(getScrollbarWidth() + 'px');
-            } else {
-                setScrollbarVar(0 + 'px');
-            }
-        });
-    }
+      var config = {
+        threshold: 1.0
+      }
 
-    var bodyScrollObserver = new IntersectionObserver(handleIntersect, config);
+      var handleIntersect = (entries, observer) => {
+          entries.forEach(entry => {
+              if (entry.intersectionRatio < 1) {
+                  setScrollbarVar(getScrollbarWidth() + 'px');
+              } else {
+                  setScrollbarVar('0px');
+              }
+          });
+      }
 
-    bodyScrollObserver.observe(document.body);
-}
+      var bodyScrollObserver = new IntersectionObserver(handleIntersect, config);
 
-window.addEventListener('load', addScrollObserver);
+      bodyScrollObserver.observe(document.body);
+  }
+
+  addScrollObserver();
+
+});
