@@ -20,7 +20,7 @@ window.addEventListener('load', () => {
       var widthWithScroll = inner.offsetWidth;
 
       // Remove divs
-      outer.parentNode.removeChild(outer);
+      outer.remove();
 
       return widthNoScroll - widthWithScroll;
   }
