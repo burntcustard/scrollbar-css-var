@@ -26,7 +26,7 @@ window.addEventListener('load', () => {
   }
 
   function setScrollbarVar(value) {
-      document.body.style.setProperty('--scrollbarWidth', value);
+      document.body.style.setProperty('--scrollbarWidth', value + 'px');
   }
 
   function addScrollObserver() {
@@ -38,9 +38,9 @@ window.addEventListener('load', () => {
       var handleIntersect = (entries, observer) => {
           entries.forEach(entry => {
               if (entry.intersectionRatio < 1) {
-                  setScrollbarVar(getScrollbarWidth() + 'px');
+                  setScrollbarVar(getScrollbarWidth());
               } else {
-                  setScrollbarVar('0px');
+                  setScrollbarVar(0);
               }
           });
       }
