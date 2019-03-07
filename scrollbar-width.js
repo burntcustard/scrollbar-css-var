@@ -4,7 +4,7 @@ window.addEventListener('load', () => {
   function getScrollbarWidth() {
       var outer = document.createElement('div');
       outer.style.visibility = 'hidden';
-      outer.style.width = '50px';
+      outer.style.width = '100px';
       document.body.appendChild(outer);
 
       var widthNoScroll = outer.offsetWidth;
@@ -26,7 +26,7 @@ window.addEventListener('load', () => {
   }
 
   function setScrollbarVar(value) {
-      document.body.style.setProperty('--scrollbarWidth', value + 'px');
+      document.body.style.setProperty('--scrollbar-width', value + 'px');
   }
 
   function addScrollObserver() {
