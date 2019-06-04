@@ -5,7 +5,7 @@ window.addEventListener('load', () => {
       var outer = document.createElement('div');
       outer.style.visibility = 'hidden';
       outer.style.width = '100px';
-      document.body.appendChild(outer);
+      document.body.append(outer);
 
       var widthNoScroll = outer.offsetWidth;
 
@@ -15,7 +15,7 @@ window.addEventListener('load', () => {
       // Add innerdiv
       var inner = document.createElement('div');
       inner.style.width = '100%';
-      outer.appendChild(inner);
+      outer.append(inner);
 
       var widthWithScroll = inner.offsetWidth;
 
@@ -32,14 +32,11 @@ window.addEventListener('load', () => {
   function addScrollObserver() {
 
       var config = {
-        threshold: 1.0
+          threshold: 1.0
       }
 
       var handleIntersect = (entries, observer) => {
           entries.forEach(entry => {
-
-              // If the viewed area of the page is less than the size of
-              // the whole page - i.e. if scrolling is required
               if (entry.intersectionRatio < 1) {
                   setScrollbarVar(getScrollbarWidth());
               } else {
