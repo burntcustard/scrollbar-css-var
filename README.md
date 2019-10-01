@@ -15,14 +15,14 @@ A tiny piece of JavaScript that gives the `<body>` element a CSS variable `--scr
 ## Install
 Download [`scrollbar-width.min.js`](https://github.com/burntcustard/scrollbar-css-var/raw/master/scrollbar-width.min.js), add it to your project folder, and include the script in your html file, for example:
 ```html
-<script src="assets/js/scrollbar-width.min.js> </script>
+<script src="assets/js/scrollbar-width.min.js"></script>
 ```
 
 
 #### Polyfill for Intersection Observer
 The `IntersectionObserver` API [isn't supported by IE](https://caniuse.com/#feat=intersectionobserver). To get it working in that, add the following [polyfill.io](https://polyfill.io/) script to your html file, before including `scrollbar-width.min.js`.
 ```html
-<script src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"> </script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"></script>
 ```
 
 
