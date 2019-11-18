@@ -1,5 +1,5 @@
 function getScrollbarWidth() {
-    if (document.documentElement.scrollHeight <= document.documentElement.clientHeight) {
+    if (document.documentElement.scrollHeight <= window.innerHeight) {
         return 0;
     }
 
