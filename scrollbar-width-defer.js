@@ -1,4 +1,8 @@
 function getScrollbarWidth() {
+    if (document.documentElement.scrollHeight <= document.documentElement.clientHeight) {
+        return 0;
+    }
+
     var outer = document.createElement('div');
     outer.style.visibility = 'hidden';
     outer.style.width = '100px';
